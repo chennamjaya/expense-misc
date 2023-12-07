@@ -18,3 +18,15 @@ resource "aws_route53_record" "jenkins" {
   records = [data.aws_instance.instance.public_ip]
   ttl     = 10
 }
+
+data "aws_instance" "artifactory" {
+  instance_id = "i-0892e85e9e753340f"
+}
+
+resource "aws_route53_record" "artifactory" {
+  name    = "artifactory.vaishnavidevops.online"
+  type    = "A"
+  zone_id = "Z0933457MNFW7LZX9MNJ"
+  records = [data.aws_instance.artifactory.public_ip]
+  ttl     = 10
+}
